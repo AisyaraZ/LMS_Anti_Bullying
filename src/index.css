@@ -1,0 +1,269 @@
+:root {
+  /* Color Palette */
+  --primary: #5B5FEF;
+  --primary-hover: #484CDD;
+  --primary-light: #EEF0FF;
+  --primary-glow: rgba(91, 95, 239, 0.25);
+
+  --secondary: #6CC5A3;
+  --secondary-hover: #58B08E;
+  --secondary-light: #EBF8F3;
+
+  --accent: #FFD166;
+  --accent-hover: #F2C150;
+  --accent-light: #FFF9EB;
+
+  --danger: #EF476F;
+  --danger-light: #FDE8ED;
+
+  --bg-main: #F7F8FC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-subtle: #F0F2F8;
+
+  --text-main: #25283D;
+  --text-muted: #5F647E;
+  --text-light: #8E94A8;
+
+  --border-light: #E4E7F2;
+  --border-focus: #5B5FEF;
+
+  --shadow-sm: 0 2px 6px rgba(37, 40, 61, 0.05);
+  --shadow-md: 0 8px 24px rgba(37, 40, 61, 0.08);
+  --shadow-lg: 0 16px 36px rgba(91, 95, 239, 0.12);
+  --shadow-highlight: 0 0 0 3px rgba(91, 95, 239, 0.35);
+
+  /* Touch Targets & Layout Dimensions */
+  --touch-target: 48px;
+  --sidebar-width: 260px;
+  --sidebar-compact-width: 76px;
+  --content-max-width: 1040px;
+
+  /* Adaptive Reading Tokens */
+  --font-base: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-dyslexic: 'Lexend', sans-serif;
+  
+  --aksara-font-family: var(--font-base);
+  --aksara-scale: 1;
+  --aksara-line-height: 1.6;
+  --aksara-letter-spacing: normal;
+  --aksara-word-spacing: normal;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  --primary: #8689FF;
+  --primary-hover: #9FA2FF;
+  --primary-light: #1E2248;
+  --primary-glow: rgba(134, 137, 255, 0.45);
+
+  --secondary: #5EEAD4;
+  --secondary-hover: #7EF2DF;
+  --secondary-light: #132E2B;
+
+  --accent: #FDE047;
+  --accent-hover: #FEF08A;
+  --accent-light: #322D11;
+
+  --danger: #FF6B8B;
+  --danger-light: #3D121D;
+
+  --bg-main: #0B0F19;
+  --bg-surface: #141B2D;
+  --bg-surface-elevated: #1D263D;
+  --bg-subtle: #1C2438;
+
+  --text-main: #FFFFFF;
+  --text-muted: #E2E8F0;
+  --text-light: #CBD5E1;
+
+  --border-light: #334155;
+  --border-focus: #FDE047;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.7);
+  --shadow-highlight: 0 0 0 3px #FDE047;
+}
+
+/* Base resets & typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--aksara-font-family);
+  font-size: calc(1rem * var(--aksara-scale));
+  line-height: var(--aksara-line-height);
+  letter-spacing: var(--aksara-letter-spacing);
+  word-spacing: var(--aksara-word-spacing);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Easy Reading Mode (Point 11: bigger text, relaxed spacing, shorter paragraphs, less noise) */
+body.mode-easy {
+  --aksara-scale: 1.15;
+  --aksara-line-height: 1.9;
+  --aksara-letter-spacing: 0.04em;
+  --aksara-word-spacing: 0.08em;
+}
+
+body.mode-easy .hide-on-easy-reading {
+  display: none !important;
+}
+
+body.mode-easy .card-interactive {
+  padding: 28px !important;
+  margin-bottom: 20px !important;
+}
+
+body.mode-easy .easy-reading-badge {
+  display: inline-flex !important;
+}
+
+/* Focus Mode (Point 12: Dim non-focus, highlight single active lesson unit) */
+body.mode-focus {
+  background-color: #0B0E18 !important;
+}
+
+body.mode-focus .hide-on-focus-mode {
+  display: none !important;
+}
+
+body.mode-focus .focus-container {
+  max-width: 780px !important;
+  margin: 0 auto !important;
+}
+
+/* Typography Hierarchy */
+h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+p, li {
+  font-size: 1rem;
+  line-height: var(--aksara-line-height);
+  color: var(--text-muted);
+}
+
+/* Interactive elements & Touch Targets */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  touch-action: manipulation;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Micro-animations */
+@keyframes pulseAudioWave {
+  0% { transform: scaleY(0.4); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0.4); }
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(91, 95, 239, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(91, 95, 239, 0); }
+}
+
+.animate-gentle-bounce {
+  animation: gentleBounce 2.5s infinite ease-in-out;
+}
+
+.animate-glow {
+  animation: glowPulse 2s infinite;
+}
+
+/* Audio wave bars */
+.audio-wave-bar {
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background-color: var(--primary);
+  border-radius: 99px;
+  animation: pulseAudioWave 0.9s infinite ease-in-out;
+}
+.audio-wave-bar:nth-child(2) { animation-delay: 0.18s; height: 22px; }
+.audio-wave-bar:nth-child(3) { animation-delay: 0.36s; height: 13px; }
+.audio-wave-bar:nth-child(4) { animation-delay: 0.12s; height: 20px; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* Drawer & Modal Backdrop */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1100;
+  transition: opacity 0.25s ease;
+}
